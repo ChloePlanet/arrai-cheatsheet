@@ -2,4 +2,4 @@ run:
 	jekyll serve
 
 build:
-	jekyll build -d doc
+	jekyll build -d docs
