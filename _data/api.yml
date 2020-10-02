@@ -1,152 +1,149 @@
-- title: Array
-  sub-title: 
-  color: aaaaaa
+- title: Tuple
+  sub-title: '(a: 1, b: 2)'
+  color: AAAAAA
   items:
-      - title: ^
-        sub-title: Start of string, or start of line in multi-line pattern
-        url: 
-
-      - title: \A
-        sub-title: Start of string
-        url: 
-
-      - title: $
-        sub-title: End of string, or end of line in multi-line pattern
-        url: 
-
-- title: Set
-  sub-title: Sub Title
-  color: F99157
-  items:
-      - title: Item 1
-        sub-title: A short description
+      - title: Merge
+        op: '+>'
+        examples:
+          - input: '(a: 1, b: 2) +> (b: 3, c: 4)'
+            output: '(a: 1, b: 3, c: 4)'
+          - input: '(a: 1, b: (c: 2)) +> (b: (c: 4), c: 4)'
+            output: '(a: 1, b: (c: 4), c: 4)'
+          - input: '(a: (b: 1)) +> (a: (c: 2))'
+            output: '(a: (c: 2))'
         url: http://www.google.com
 
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
 
-      - title: A short description
-        sub-title: 
-        url: http://www.google.com
 
 - title: Dictionary
-  sub-title: {"a": 1, "b": 2}
+  sub-title: '{"a": 1, "b": 2}'
   color: 5FB3B3
   items:
-      - title: Item 1
-        sub-title: A short description
+      - title: Merge
+        op: '+>'
+        examples:
+          - input: '{"a": 1, "b": 2} +> {"b": 3, "d": 4}'
+            output: "{'a': 1, 'b': 3, 'd': 4}"
+          - input: '{"a": {"b": 1}} +> {"a": {"c": 2}}'
+            output: "{'a': {'c': 2}}"
         url: http://www.google.com
 
-      - title: Item 2
-        sub-title: A short description
+
+
+- title: Set
+  sub-title: '{1,2,3,4}'
+  color: 8D89D1
+  items:
+      - title: Filter
+        op: 'where / filter'
+        examples:
+          - input: '{(a:1, b:2), (a:2, b:3), (a:2, b:4)} where .a=2'
+            output: '{(a:2, b:4)}'
+          - input: '{(a:1, b:2), (a:2, b:3), (a:2, b:4)} where .a=2 and .b=3'
+            output: '{(a:2, b:3)}'
+          - input: '{(a:1, b:2), (a:2, b:3), (a:2, b:4)} where .a=2 or .b=4'
+            output: '{(a:2, b:3), (a:2, b:4)}'
+          - input: '{(a:1, b:2), (a:2, b:3), (a:2, b:4)} where .a!=2'
+            output: '{(a:1, b:2)}'
+          - input: '{1, [2, 3], 4, [5, 6]} filter . {[a, b]: a + b}'
+            output: '{5, 11}'
+          - input: '{1, [2, 3], 4, [5, 6], [7, 8, 9]} filter . {[a, ..., b]: a + b}'
+            output: '{5, 11, 16}'
+          - input: '{1, [2, 3], 4, [5, 6]} filter . {[_, _]: 42}'
+            output: '{42}'
         url: http://www.google.com
 
-      - title: A short description
-        sub-title: 
+      - title: Evaluate each item
+        op: '=>'
+        examples:
+          - input: '{1,2,3,4} => .^2'
+            output: '{1,4,9,16}'
         url: http://www.google.com
+
+
+
+
+- title: Array
+  sub-title: [1,2,3,4]
+  color: EAB853
+  items:
+      - title: Evaluate each item
+        examples:
+          - input: '[1,2,3,4] >> .^2'
+            output: '[1,4,9,16]'
+        url: http://www.google.com
+
+
+
+- title: Number
+  sub-title: 42
+  color: 89B784
+  items:
+      - title: Add
+        examples:
+          - input: '41 + 1'
+            output: '42'
+        url: http://www.google.com
+
+
+
+- title: String
+  sub-title: '"helloworld"'
+  color: 89B784
+  items:
+      - title: Length
+        op: 'count'
+        examples:
+          - input: '"123456789" count'
+            output: '9'
+        url: http://www.google.com
+
+
+- title: Boolean
+  sub-title: true
+  color: 89B784
+  items:
+      - title: true
+        examples:
+          - input: '{()}'
+            output: 'true'
+        url: http://www.google.com
+
+
+
+- title: Relations
+  sub-title: '{|a,b| (1,2), (2,2)}'
+  color: 5FB3B3
+  items:
+      - title: Join
+        op: '<&>'
+        examples:
+          - input: '{|a,b| (1,2), (2,2)} <&> {|a,c| (1,2), (1,3)}'
+            output: '{(a: 1, b: 2, c: 2), (a: 1, b: 2, c: 3)}'
+        url: http://www.google.com
+
+      - title: Nest
+        op: 'nest |attr1,attr2,...|key'
+        examples:
+          - input: '{|a,b| (1,2), (2,2)} <&> {|a,c| (1,2), (1,3)}'
+            output: '{(a: 1, b: 2, c: 2), (a: 1, b: 2, c: 3)}'
+          - input: '{|a,b| (1,2), (2,3)} nest |b|nestb'
+            output: '{(a: 1, nestb:{(b: 2)}), (a: 2, nestb:{(b: 3)})}'
+          - input: '{|a,b,c| (1,2,3), (1,3,3), (1,2,2)} nest |b|nestb'
+            output: '{(a: 1, c: 3, nestb: {(b: 2), (b: 3)}), (a: 1, c: 2, nestb: {(b: 2)})}'
+          - input: '{|a,b,c| (1,2,3), (1,3,3), (1,2,2)} nest |b,c|nestbc'
+            output: '{(a: 1, nestbc: {(b: 2, c: 3), (b: 3, c: 3), (b: 2, c: 2)})}'
+        url: http://www.google.com
+
+
 
 - title: Conditional operator
-  sub-title: cond { 2 > 1 : 1, 2 > 3 : 2}
+  sub-title: 
   color: 6699CC
   items:
       - title: cond
-        sub-title: Conditional operator
+        op: 'cond'
+        input: "cond { 2 > 1 : 1, 2 > 3 : 2}"
         url: https://github.com/arr-ai/arrai/blob/master/docs/example.md#conditional-operator
 
-- title: Card 5
-  sub-title: Sub Title
-  color: EC5f67
-  items:
-      - title: Item 1
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: A short description
-        sub-title: 
-        url: http://www.google.com
-
-- title: Card 6
-  sub-title: Sub Title
-  color: 8D89D1
-  items:
-      - title: Item 1
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: A short description
-        sub-title: 
-        url: http://www.google.com
-
-- title: Card 7
-  sub-title: Sub Title
-  color: EAB853
-  items:
-      - title: Item 1
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: A short description
-        sub-title: 
-        url: http://www.google.com
-
-- title: Card 8
-  sub-title: Sub Title
-  color: 89B784
-  items:
-      - title: Item 1
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 3
-        sub-title: 
-        url: http://www.google.com
-
-- title: Card 9
-  sub-title: Sub Title
-  color: 5FB3B3
-  items:
-      - title: Item 1
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 3
-        sub-title: 
-        url: http://www.google.com
-
-- title: Card 10
-  sub-title: Sub Title
-  color: EC5f67
-  items:
-      - title: Item 1
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 2
-        sub-title: A short description
-        url: http://www.google.com
-
-      - title: Item 3
-        sub-title: 
-        url: http://www.google.com
  
