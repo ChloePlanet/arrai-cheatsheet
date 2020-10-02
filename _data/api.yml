@@ -1,0 +1,152 @@
+- title: Array
+  sub-title: 
+  color: aaaaaa
+  items:
+      - title: ^
+        sub-title: Start of string, or start of line in multi-line pattern
+        url: 
+
+      - title: \A
+        sub-title: Start of string
+        url: 
+
+      - title: $
+        sub-title: End of string, or end of line in multi-line pattern
+        url: 
+
+- title: Set
+  sub-title: Sub Title
+  color: F99157
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: A short description
+        sub-title: 
+        url: http://www.google.com
+
+- title: Dictionary
+  sub-title: {"a": 1, "b": 2}
+  color: 5FB3B3
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: A short description
+        sub-title: 
+        url: http://www.google.com
+
+- title: Conditional operator
+  sub-title: cond { 2 > 1 : 1, 2 > 3 : 2}
+  color: 6699CC
+  items:
+      - title: cond
+        sub-title: Conditional operator
+        url: https://github.com/arr-ai/arrai/blob/master/docs/example.md#conditional-operator
+
+- title: Card 5
+  sub-title: Sub Title
+  color: EC5f67
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: A short description
+        sub-title: 
+        url: http://www.google.com
+
+- title: Card 6
+  sub-title: Sub Title
+  color: 8D89D1
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: A short description
+        sub-title: 
+        url: http://www.google.com
+
+- title: Card 7
+  sub-title: Sub Title
+  color: EAB853
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: A short description
+        sub-title: 
+        url: http://www.google.com
+
+- title: Card 8
+  sub-title: Sub Title
+  color: 89B784
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 3
+        sub-title: 
+        url: http://www.google.com
+
+- title: Card 9
+  sub-title: Sub Title
+  color: 5FB3B3
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 3
+        sub-title: 
+        url: http://www.google.com
+
+- title: Card 10
+  sub-title: Sub Title
+  color: EC5f67
+  items:
+      - title: Item 1
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 2
+        sub-title: A short description
+        url: http://www.google.com
+
+      - title: Item 3
+        sub-title: 
+        url: http://www.google.com
+ 
