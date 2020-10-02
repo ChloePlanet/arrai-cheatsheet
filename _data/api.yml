@@ -39,6 +39,12 @@
             output: '(b: 0.3, g: 0.8, r: 0.5)'
         url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
 
+      - title: transforms a set into an array
+        op: 'orderby'
+        examples:
+          - input: '{'red', 'green', 'blue'} orderby .'
+            output: '['blue', 'green', 'red']'
+        url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
 
 - title: Tuple
   sub-title: '(a: 1, b: 2)'

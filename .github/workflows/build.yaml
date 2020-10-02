@@ -1,0 +1,42 @@
+name: Build
+on:
+  push:
+    branches:
+      - 'master'
+    tags-ignore:
+      - '*.*' # We don't want this to run on tags
+
+env:
+  RUN_CI: ${{ !contains(github.event.head_commit.message, 'skip-ci') }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+
+    - name: Generate static files to docs folder
+      if: env.RUN_CI=='true'
+      run: make build
+      env:
+        SYSL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Commit files
+      if: env.RUN_CI=='true'
+      run: |
+        git config --global user.name 'Github Workflow'
+        git config --global user.email 'no-reply@github.com'
+        git add -f docs
+        git commit -m "Rebuild site [skip-ci]" || echo "No changes to docs"
+
+    - name: Push changes
+      if: env.RUN_CI=='true'
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
+        branch: master
