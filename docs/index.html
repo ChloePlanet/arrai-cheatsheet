@@ -19,6 +19,76 @@
 <ul class='menu-root'>
 
     
+    <li style="background-color: #6699CC">
+        <a class='section-link active' data-scroll=''>
+            <h2>Transform</h2>
+            <p></p>
+        </a>
+        <ul class='menu-sub'>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md' target="_new">
+                    <h2>transforms a single value</h2>
+                    <h3>-></h3>
+                    
+                        <p class="input">@> "hello, " -> . ++ "world"</p>
+                        <p class="output">hello, world</p>
+                    
+                    
+                </a>
+            </li>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md' target="_new">
+                    <h2>transforms the members of a set</h2>
+                    <h3>=></h3>
+                    
+                        <p class="input">@> {2, 4, 6, 8, 10} => . + 1</p>
+                        <p class="output">{3, 5, 7, 9, 11}</p>
+                    
+                    
+                </a>
+            </li>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md' target="_new">
+                    <h2>transforms the entries of a sequence or dictionary</h2>
+                    <h3>>></h3>
+                    
+                        <p class="input">@> [1, 2, 3, 4] >> 2 ^ .</p>
+                        <p class="output">[2, 4, 8, 16]</p>
+                    
+                        <p class="input">@> {"A": 10, "B": 42, "C": 100} >> 100 - .</p>
+                        <p class="output">{'A': 90, 'B': 58, 'C': 0}</p>
+                    
+                    
+                </a>
+            </li>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md' target="_new">
+                    <h2>transforms the entries of a sequence or dictionary</h2>
+                    <h3>>>></h3>
+                    
+                    
+                </a>
+            </li>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md' target="_new">
+                    <h2>transforms the attributes of a tuple</h2>
+                    <h3>:></h3>
+                    
+                        <p class="input">@> (r: 0.5, g: 0.2, b: 0.7) :> 1 - .</p>
+                        <p class="output">(b: 0.3, g: 0.8, r: 0.5)</p>
+                    
+                    
+                </a>
+            </li>
+            
+        </ul>
+    </li>
+    
     <li style="background-color: #AAAAAA">
         <a class='section-link active' data-scroll=''>
             <h2>Tuple</h2>
@@ -50,7 +120,7 @@
     <li style="background-color: #5FB3B3">
         <a class='section-link active' data-scroll=''>
             <h2>Dictionary</h2>
-            <p>{"a": 1, "b": 2}</p>
+            <p>{"a": 1, "b": 2} / {(@: "a", @value: 1), (@: "b", @value: 2)}</p>
         </a>
         <ul class='menu-sub'>
             
@@ -127,83 +197,17 @@
     <li style="background-color: #EAB853">
         <a class='section-link active' data-scroll=''>
             <h2>Array</h2>
-            <p>1234</p>
+            <p>[1,2,3] / {(@: 0, @item: 1), (@: 1, @item: 2), (@: 2, @item: 3)}</p>
         </a>
         <ul class='menu-sub'>
             
             <li>
                 <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
                     <h2>Evaluate each item</h2>
-                    <h3></h3>
+                    <h3>>></h3>
                     
                         <p class="input">@> [1,2,3,4] >> .^2</p>
                         <p class="output">[1,4,9,16]</p>
-                    
-                    
-                </a>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="background-color: #89B784">
-        <a class='section-link active' data-scroll=''>
-            <h2>Number</h2>
-            <p>42</p>
-        </a>
-        <ul class='menu-sub'>
-            
-            <li>
-                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
-                    <h2>Add</h2>
-                    <h3></h3>
-                    
-                        <p class="input">@> 41 + 1</p>
-                        <p class="output">42</p>
-                    
-                    
-                </a>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="background-color: #89B784">
-        <a class='section-link active' data-scroll=''>
-            <h2>String</h2>
-            <p>"helloworld"</p>
-        </a>
-        <ul class='menu-sub'>
-            
-            <li>
-                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
-                    <h2>Length</h2>
-                    <h3>count</h3>
-                    
-                        <p class="input">@> "123456789" count</p>
-                        <p class="output">9</p>
-                    
-                    
-                </a>
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li style="background-color: #89B784">
-        <a class='section-link active' data-scroll=''>
-            <h2>Boolean</h2>
-            <p>true</p>
-        </a>
-        <ul class='menu-sub'>
-            
-            <li>
-                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
-                    <h2>true</h2>
-                    <h3></h3>
-                    
-                        <p class="input">@> {()}</p>
-                        <p class="output">true</p>
                     
                     
                 </a>
@@ -255,6 +259,94 @@
         </ul>
     </li>
     
+    <li style="background-color: #EAB853">
+        <a class='section-link active' data-scroll=''>
+            <h2>Number</h2>
+            <p>42</p>
+        </a>
+        <ul class='menu-sub'>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
+                    <h2>Add</h2>
+                    <h3>+</h3>
+                    
+                        <p class="input">@> 41 + 1</p>
+                        <p class="output">42</p>
+                    
+                    
+                </a>
+            </li>
+            
+        </ul>
+    </li>
+    
+    <li style="background-color: #AAAAAA">
+        <a class='section-link active' data-scroll=''>
+            <h2>String</h2>
+            <p>"lol" / {(@: 0, @char: 108), (@: 1, @char: 111), (@: 2, @char: 108)}</p>
+        </a>
+        <ul class='menu-sub'>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
+                    <h2>Length</h2>
+                    <h3>count</h3>
+                    
+                        <p class="input">@> "123456789" count</p>
+                        <p class="output">9</p>
+                    
+                    
+                </a>
+            </li>
+            
+        </ul>
+    </li>
+    
+    <li style="background-color: #89B784">
+        <a class='section-link active' data-scroll=''>
+            <h2>Boolean</h2>
+            <p>true</p>
+        </a>
+        <ul class='menu-sub'>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
+                    <h2>true</h2>
+                    <h3></h3>
+                    
+                        <p class="input">@> {()}</p>
+                        <p class="output">true</p>
+                    
+                    
+                </a>
+            </li>
+            
+        </ul>
+    </li>
+    
+    <li style="background-color: #5FB3B3">
+        <a class='section-link active' data-scroll=''>
+            <h2>Function</h2>
+            <p></p>
+        </a>
+        <ul class='menu-sub'>
+            
+            <li>
+                <a class='section-link' data-scroll='' href='http://www.google.com' target="_new">
+                    <h2>Call</h2>
+                    <h3>-></h3>
+                    
+                        <p class="input">@> "hello" -> \. //str.upper(.)</p>
+                        <p class="output">HELLO</p>
+                    
+                    
+                </a>
+            </li>
+            
+        </ul>
+    </li>
+    
     <li style="background-color: #6699CC">
         <a class='section-link active' data-scroll=''>
             <h2>Conditional operator</h2>
@@ -266,6 +358,9 @@
                 <a class='section-link' data-scroll='' href='https://github.com/arr-ai/arrai/blob/master/docs/example.md#conditional-operator' target="_new">
                     <h2>cond</h2>
                     <h3>cond</h3>
+                    
+                        <p class="input">@> cond { 2 > 1 : 1, 2 > 3 : 2}</p>
+                        <p class="output">1</p>
                     
                     
                 </a>

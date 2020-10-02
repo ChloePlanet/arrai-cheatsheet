@@ -123,6 +123,7 @@ html, body {
   .output {
     color: #ececec;
     font-family: monospace;
+    margin-bottom: 10px;
   }
   
   #modal {

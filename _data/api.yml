@@ -1,3 +1,45 @@
+- title: Transform
+  sub-title: 
+  color: 6699CC
+  items:
+      - title: transforms a single value
+        op: '->'
+        examples:
+          - input: '"hello, " -> . ++ "world"'
+            output: 'hello, world'
+        url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
+
+      - title: transforms the members of a set
+        op: '=>'
+        examples:
+          - input: '{2, 4, 6, 8, 10} => . + 1'
+            output: '{3, 5, 7, 9, 11}'
+        url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
+
+      - title: transforms the entries of a sequence or dictionary
+        op: '>>'
+        examples:
+          - input: '[1, 2, 3, 4] >> 2 ^ .'
+            output: '[2, 4, 8, 16]'
+          - input: '{"A": 10, "B": 42, "C": 100} >> 100 - .'
+            output: "{'A': 90, 'B': 58, 'C': 0}"
+        url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
+
+      - title: transforms the entries of a sequence or dictionary
+        op: '>>>'
+        # examples:
+          # - input: "['red', 'green', 'blue'] >>> \i \c $'${c} = ${i}'"
+          #   output: "['red = 0', 'green = 1', 'blue = 2']"
+        url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
+
+      - title: transforms the attributes of a tuple
+        op: ':>'
+        examples:
+          - input: '(r: 0.5, g: 0.2, b: 0.7) :> 1 - .'
+            output: '(b: 0.3, g: 0.8, r: 0.5)'
+        url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
+
+
 - title: Tuple
   sub-title: '(a: 1, b: 2)'
   color: AAAAAA
@@ -16,7 +58,7 @@
 
 
 - title: Dictionary
-  sub-title: '{"a": 1, "b": 2}'
+  sub-title: '{"a": 1, "b": 2} / {(@: "a", @value: 1), (@: "b", @value: 2)}'
   color: 5FB3B3
   items:
       - title: Merge
@@ -64,52 +106,15 @@
 
 
 - title: Array
-  sub-title: [1,2,3,4]
+  sub-title: '[1,2,3] / {(@: 0, @item: 1), (@: 1, @item: 2), (@: 2, @item: 3)}'
   color: EAB853
   items:
       - title: Evaluate each item
+        op: '>>'
         examples:
           - input: '[1,2,3,4] >> .^2'
             output: '[1,4,9,16]'
         url: http://www.google.com
-
-
-
-- title: Number
-  sub-title: 42
-  color: 89B784
-  items:
-      - title: Add
-        examples:
-          - input: '41 + 1'
-            output: '42'
-        url: http://www.google.com
-
-
-
-- title: String
-  sub-title: '"helloworld"'
-  color: 89B784
-  items:
-      - title: Length
-        op: 'count'
-        examples:
-          - input: '"123456789" count'
-            output: '9'
-        url: http://www.google.com
-
-
-- title: Boolean
-  sub-title: true
-  color: 89B784
-  items:
-      - title: true
-        examples:
-          - input: '{()}'
-            output: 'true'
-        url: http://www.google.com
-
-
 
 - title: Relations
   sub-title: '{|a,b| (1,2), (2,2)}'
@@ -135,6 +140,51 @@
             output: '{(a: 1, nestbc: {(b: 2, c: 3), (b: 3, c: 3), (b: 2, c: 2)})}'
         url: http://www.google.com
 
+- title: Number
+  sub-title: 42
+  color: EAB853
+  items:
+      - title: Add
+        op: '+'
+        examples:
+          - input: '41 + 1'
+            output: '42'
+        url: http://www.google.com
+
+
+- title: String
+  sub-title: '"lol" / {(@: 0, @char: 108), (@: 1, @char: 111), (@: 2, @char: 108)}'
+  color: AAAAAA
+  items:
+      - title: Length
+        op: 'count'
+        examples:
+          - input: '"123456789" count'
+            output: '9'
+        url: http://www.google.com
+
+
+- title: Boolean
+  sub-title: true
+  color: 89B784
+  items:
+      - title: true
+        examples:
+          - input: '{()}'
+            output: 'true'
+        url: http://www.google.com
+
+
+- title: Function
+  sub-title:
+  color: 5FB3B3
+  items:
+      - title: Call
+        op: '->'
+        examples:
+          - input: '"hello" -> \. //str.upper(.)'
+            output: 'HELLO'
+        url: http://www.google.com
 
 
 - title: Conditional operator
@@ -143,7 +193,8 @@
   items:
       - title: cond
         op: 'cond'
-        input: "cond { 2 > 1 : 1, 2 > 3 : 2}"
+        examples:
+          - input: 'cond { 2 > 1 : 1, 2 > 3 : 2}'
+            output: '1'
         url: https://github.com/arr-ai/arrai/blob/master/docs/example.md#conditional-operator
 
- 
