@@ -28,7 +28,7 @@
       - title: transforms the entries of a sequence or dictionary
         op: '>>>'
         examples:
-          # - input: "['red', 'green', 'blue'] >>> \i \c $'${c} = ${i}'"
+          - input: '["red", "green", "blue"] >>> \i \c $"${c} = ${i}"'
             output: "['red = 0', 'green = 1', 'blue = 2']"
         url: https://github.com/arr-ai/arrai/blob/master/docs/tutorial/transforms.md
 
